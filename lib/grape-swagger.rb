@@ -17,7 +17,7 @@ module Grape
 
         @combined_routes = {}
         routes.each do |route|
-          route_path = route.route_path
+          route_path = route.route_path.gsub('/:version','')
           route_match = route_path.split(/^.*?#{route.route_prefix.to_s}/).last
           next unless route_match
           route_match = route_match.match('\/([\w|-]*?)[\.\/\(]') || route_match.match('\/([\w|-]*)')
